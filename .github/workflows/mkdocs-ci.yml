@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,5 +20,6 @@ jobs:
           python-version: "3.11"
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: deploy to github pages
-        run: mkdocs gh-deploy --force
+  deploy:
+    - name: deploy to github pages
+      run: mkdocs gh-deploy --force
