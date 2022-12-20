@@ -1,10 +1,10 @@
-name: Python application
+name: mkdocs-ci
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 permissions:
   contents: write
@@ -13,12 +13,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.11"
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-    - name: Deploy
-      run: mkdocs gh-deploy
+      - uses: actions/checkout@v3
+      - name: set-up python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: deploy to github pages
+        run: mkdocs gh-deploy --force
